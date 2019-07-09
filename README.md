@@ -10,10 +10,26 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 Write 3 different ways of safely unwrapping and printing the value of `userName`.  If it is nil, print "No name".
 
 - Method one: Check for nil and force unwrap
+```swift
+userName = "no name"
+print(userName!)
+```
 
 - Method two: Optional binding
+```swift
+if let unwrappedUserName = userName {
+print("\(unwrappedUserName)")
+} else {
+print("no name")
+}
+
+```
 
 - Method three: Nil coalescing
+```swift
+var ifThereIsAUserName = userName ?? "No Name"
+print(ifThereIsAUserName)
+```
 
 
 ## Question 2
@@ -21,7 +37,15 @@ Write 3 different ways of safely unwrapping and printing the value of `userName`
 Given optional string `backgroundColor`, write code that safely unwraps and prints it. If backgroundColor is nil, give it a value.
 
 `var backgroundColor: String?`
+```swift
+var backgroundColor: String?
+backgroundColor = "Blue"
 
+if let theColor = backgroundColor {
+print("\(theColor)")
+}
+
+```
 
 ## Question 3
 
@@ -30,6 +54,16 @@ Given an optional width and an optional height of a rectangle, write code that c
 ```swift
 var width: Double?
 var height: Double?
+width = 3.2
+height = 2.2
+
+if let unwrappedWidth = width {
+if let unwrappedHeight = height {
+print(unwrappedWidth * unwrappedHeight)
+}
+} else {
+print("There is an error because both variables are nil")
+}
 ```
 
 
@@ -41,6 +75,16 @@ Given the following optional variables `name`, `age` and `height`. Write code so
 var name: String?
 var age: Int?
 var height: Double?
+
+name = "Liana"
+age = 35
+height = 5.16
+
+if let theName = name, let theAge = age, let theHeight = height {
+print("My name is \(theName). I am \(theAge) years old and \(theHeight) feet tall.")
+} else {
+print("There is an error here.")
+}
 ```
 
 
@@ -52,6 +96,15 @@ Given the variables `firstName`, `middleName` and `lastName`. Create a variable 
 var firstName: String = "Johnny"
 var middleName: String?
 var lastName: String = "Stone"
+
+var fullName: String
+
+if let name = middleName {
+fullName = ("\(firstName)  \(name)  \(lastName)")
+print(fullName)
+} else {
+print("\(firstName) \(lastName) does not have a middle name.")
+}
 ```
 
 
@@ -60,7 +113,13 @@ var lastName: String = "Stone"
 Write code that adds 15 to `myIntString`, then prints the sum. Use the `Int()` constructor which returns an optional Int `(Int?)`.
 
 `let myIntString = "35"`
+```swift
+let myIntString = "35"
+let realInt = Int(myIntString) ?? 0
+let adder = 15
 
+print(realInt + adder)
+```
 
 ## Question 7
 
@@ -84,6 +143,17 @@ var tuple: (Int, Int)?
 if Bool.random() {
  tuple = (5, 3)
 }
+
+var tuple: (Int, Int)?
+if Bool.random() {
+tuple = (5, 3)
+}
+
+if let unwrappedTuple = tuple {
+print(unwrappedTuple)
+} else {
+print("The tuple is nil")
+}
 ```
 
 
@@ -96,6 +166,13 @@ let myInt: Int?
 if Bool.random() {
  myInt = 5
 }
+
+if let unwrappedInt = myInt {
+print(unwrappedInt * 2)
+} else {
+print("This constant is nil")
+}
+
 ```
 
 
@@ -110,6 +187,18 @@ let doubleTwo: Double = 5
 if Bool.random() {
  myDouble = 12
 }
+
+var myDouble: Double?
+let doubleTwo: Double = 5
+
+if Bool.random() {
+myDouble = 12
+}
+if let unwrappedMyDouble = myDouble{
+print(unwrappedMyDouble * doubleTwo)
+} else {
+print("One of the doubles is nil")
+}
 ```
 
 
@@ -122,6 +211,13 @@ var isTheGreatest: Bool?
 
 if Bool.random() {
  isTheGreatest = true
+}
+
+if let unwrappedGreatest = isTheGreatest {
+print(unwrappedGreatest)
+} else {
+isTheGreatest = false
+print(isTheGreatest!)
 }
 ```
 
@@ -140,6 +236,26 @@ if Bool.random() {
  myTuple.1 = 9
  myTuple.3 = 10
 }
+
+//my code below
+var myTuple: (Int?, Int?, Int?, Int?)
+
+if Bool.random() {
+myTuple.0 = 5
+myTuple.2 = 14
+} else {
+myTuple.1 = 9
+myTuple.3 = 10
+}
+
+var tupleZero = myTuple.0 ?? 0
+var tupleOne = myTuple.1 ?? 0
+var tupleTwo = myTuple.2 ?? 0
+var tupleThree = myTuple.3 ?? 0
+
+print(tupleZero + tupleOne + tupleTwo + tupleThree)
+
+
 ```
 
 
@@ -206,6 +322,15 @@ var numberOfPeople: Int?
 
 if Bool.random() {
  numberOfPeople = 108
+}
+//My code below
+
+if let unwrappedNumberOfPeople = numberOfPeople {
+if unwrappedNumberOfPeople % 2 == 0 {
+print(unwrappedNumberOfPeople)
+}
+} else {
+print("The value is nil in this variable")
 }
 ```
 
